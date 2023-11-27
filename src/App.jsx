@@ -1,43 +1,40 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+// import { useState } from "react";
+import { useQuery, QueryClientProvider, QueryClient } from "react-query";
 import "./App.css";
-import { Button } from "@mui/material";
+import MovieCard from "./components/movieCard";
 
 //app
 
+const queryClient = new QueryClient();
+const apiKey = import.meta.env.VITE_API_KEY;
+const api = import.meta.env.VITE_API;
+
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Example />
+    </QueryClientProvider>
+  );
+}
+
+function Example() {
+  const { data, error, isLoading } = useQuery("movies", () =>
+    fetch(`${api}top_rated?${apiKey}&language=pt-BR`).then((res) => res.json())
+  );
+
+  if (isLoading) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <section>
+      <div className="movies">
+        {data.results.map((movie, index) => (
+          <MovieCard key={index} movie={movie} />
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <Button
-          onClick={() => setCount((count) => count + 1)}
-          variant="contained"
-        >
-          count is {count}
-        </Button>
-        {/* <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button> */}
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </section>
   );
 }
 
