@@ -53,7 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function NavBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ backgroundColor: "#000000" }} position="static">
+      <AppBar sx={{ backgroundColor: "#121212" }} position="static">
         <Toolbar>
           <Typography
             variant="h6"
@@ -61,12 +61,19 @@ export default function NavBar() {
             component="div"
             sx={{
               flexGrow: 1,
-              display: { xs: "none", sm: "block", marginLeft: "110px" },
+              display: {
+                xs: "none",
+                sm: "block",
+                color: "#2896fc",
+                marginLeft: "40px",
+                fontSize: "35px",
+                fontWeight: "700",
+              },
             }}
           >
-            FlixBase
+            Flix<span style={{ color: "white" }}>base</span>
           </Typography>
-          <Search sx={{ marginRight: "110px" }}>
+          <Search sx={{ marginRight: "40px" }}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>

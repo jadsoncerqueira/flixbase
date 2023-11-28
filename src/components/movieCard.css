@@ -1,7 +1,7 @@
 .btn-movie {
   border: none;
   padding: 0;
-  height: 300px;
+  height: 250px;
   width: max-content;
   border-radius: 15px;
   background-color: transparent;
@@ -17,8 +17,8 @@
   font-size: 14px;
   margin-bottom: 15px;
   /* border: 1px solid red; */
-  width: 200px;
-  transition: 0.2s;
+  width: 166.66px;
+  transition: 0.1s;
   /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.322); */
   border-radius: 10px;
 }
@@ -28,7 +28,7 @@
 }
 
 .card-div:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   /* box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.164); */
 }
 
