@@ -53,7 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function NavBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ backgroundColor: "#121212" }} position="static">
+      <AppBar sx={{ backgroundColor: "#121212" }}>
         <Toolbar>
           <Typography
             variant="h6"

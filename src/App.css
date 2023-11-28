@@ -27,10 +27,24 @@
   justify-content: center;
 }
 
-.subtitulo {
+.header-tops {
   color: rgb(255, 255, 255);
-  margin-left: 65px;
-  font-size: 21px;
+  margin: 0 65px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
+.header-tops button {
+  border: none;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  font-weight: 700;
+  padding: 5px 25px;
+  /* width: 50px; */
 }
 
 @keyframes logo-spin {

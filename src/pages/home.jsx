@@ -1,9 +1,9 @@
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
-import MovieCard from "../components/movieCard";
+import { QueryClient, QueryClientProvider } from "react-query";
+import Populars from "../components/pupulars";
+import TopRated from "../components/topRated";
+import UpComing from "../components/upComing";
 
 const queryClient = new QueryClient();
-const apiKey = import.meta.env.VITE_API_KEY;
-const api = import.meta.env.VITE_API;
 
 export default function Home() {
   return (
@@ -14,24 +14,11 @@ export default function Home() {
 }
 
 function Example() {
-  const { data, error, isLoading } = useQuery("movies", () =>
-    fetch(`${api}popular?${apiKey}&language=pt-BR`).then((res) => res.json())
-  );
-
-  if (isLoading) return "Loading...";
-
-  if (error) return "An error has occurred: " + error.message;
-
   return (
-    <section>
-      <h2 className="subtitulo">Mais Populares</h2>
-      <div className="movies">
-        {data.results.map((movie, index) => (
-          <>
-            <MovieCard key={index} movie={movie} />
-          </>
-        ))}
-      </div>
-    </section>
+    <>
+      <Populars />
+      <TopRated />
+      <UpComing />
+    </>
   );
 }
