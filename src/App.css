@@ -1,8 +1,8 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* padding: 2rem; */
+  /* text-align: center; */
 }
 
 .logo {
@@ -20,8 +20,11 @@
 
 .movies {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: max-content max-content max-content max-content max-content;
   gap: 20px;
+  margin-top: 50px;
+  /* border: 1px solid red; */
+  justify-content: center;
 }
 
 @keyframes logo-spin {

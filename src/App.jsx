@@ -2,6 +2,7 @@
 import { useQuery, QueryClientProvider, QueryClient } from "react-query";
 import "./App.css";
 import MovieCard from "./components/movieCard";
+import NavBar from "./components/navbar";
 
 //app
 
@@ -18,23 +19,35 @@ function App() {
   );
 }
 
+// const apiImg = import.meta.env.VITE_IMAGE;
+
 function Example() {
   const { data, error, isLoading } = useQuery("movies", () =>
-    fetch(`${api}top_rated?${apiKey}&language=pt-BR`).then((res) => res.json())
+    fetch(`${api}popular?${apiKey}&language=pt-BR`).then((res) => res.json())
   );
 
   if (isLoading) return "Loading...";
 
   if (error) return "An error has occurred: " + error.message;
 
+  console.log(data.results);
+
   return (
-    <section>
-      <div className="movies">
-        {data.results.map((movie, index) => (
-          <MovieCard key={index} movie={movie} />
-        ))}
-      </div>
-    </section>
+    <>
+      <NavBar />
+      <section>
+        {/* <div className="capa">
+          <img src={`${apiImg}${data.results[0].backdrop_path}`} />
+        </div> */}
+        <div className="movies">
+          {data.results.map((movie, index) => (
+            <>
+              <MovieCard key={index} movie={movie} />
+            </>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 
