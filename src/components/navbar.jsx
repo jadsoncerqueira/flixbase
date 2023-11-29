@@ -150,7 +150,7 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Flixbase
       </Typography>
       <Divider />
       <List>
@@ -197,7 +197,7 @@ function DrawerAppBar(props) {
               flexGrow: 1,
               display: { xs: "none", sm: "block" },
               marginLeft: "40px",
-              fontSize: "30px",
+              fontSize: "40px",
               fontWeight: "700",
               color: "#2896fc",
             }}
