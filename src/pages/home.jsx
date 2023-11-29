@@ -1,24 +1,22 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import Populars from "../components/pupulars";
-import TopRated from "../components/topRated";
-import UpComing from "../components/upComing";
+import Movies from "../components/movies";
+// import TopRated from "../components/topRated";
+// import UpComing from "../components/upComing";
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 export default function Home() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Example />
-    </QueryClientProvider>
-  );
+  return <Example />;
 }
 
 function Example() {
   return (
     <>
-      <Populars />
-      <TopRated />
-      <UpComing />
+      <QueryClientProvider client={new QueryClient()}>
+        <Movies info={{ tag: "popular", quantidade: 7 }} />
+        <Movies info={{ tag: "top_rated", quantidade: 7 }} />
+        <Movies info={{ tag: "upcoming", quantidade: 7 }} />
+      </QueryClientProvider>
     </>
   );
 }

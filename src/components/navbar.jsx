@@ -2,11 +2,11 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-// import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-// import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
+import "./navbar.css";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -37,7 +37,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -54,18 +53,16 @@ export default function NavBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar sx={{ backgroundColor: "#121212" }}>
-        <Toolbar>
+        <Toolbar className="toolbar">
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{
-              flexGrow: 1,
               display: {
                 xs: "none",
                 sm: "block",
                 color: "#2896fc",
-                marginLeft: "40px",
                 fontSize: "35px",
                 fontWeight: "700",
               },
@@ -73,7 +70,21 @@ export default function NavBar() {
           >
             Flix<span style={{ color: "white" }}>base</span>
           </Typography>
-          <Search sx={{ marginRight: "40px" }}>
+          <div className="nav-links">
+            <Link className="links" to="/">
+              Home
+            </Link>
+            <Link className="links" to="/categoria/popular">
+              Popular
+            </Link>
+            <Link className="links" to="/categoria/top_rated">
+              Mais votados
+            </Link>
+            <Link className="links" to="/categoria/upcoming">
+              Por vir
+            </Link>
+          </div>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
