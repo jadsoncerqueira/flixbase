@@ -1,3 +1,7 @@
+section {
+  background-color: #00060f;
+}
+
 .nav-links {
   /* border: 1px solid red; */
   display: flex;
@@ -5,12 +9,12 @@
 }
 
 .links {
-  color: rgb(146, 146, 146);
+  color: rgb(99, 99, 99);
   transition: 0.1s;
 }
 
 .links:hover {
-  color: rgb(235, 235, 235);
+  color: rgb(241, 241, 241);
 }
 
 .toolbar {

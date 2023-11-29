@@ -16,7 +16,7 @@ export default function MovieCard(movie) {
           </div>
           <img className="img-movie" src={`${apiImg}${poster_path}`} alt="" />
         </button>
-        <p>{title}</p>
+        {/* <p>{title}</p> */}
       </div>
     </>
   );
