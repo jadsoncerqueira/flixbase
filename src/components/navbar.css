@@ -1,0 +1,24 @@
+section {
+  background-color: #00060f;
+}
+
+.nav-links {
+  /* border: 1px solid red; */
+  display: flex;
+  gap: 20px;
+}
+
+.links {
+  color: rgb(99, 99, 99);
+  transition: 0.1s;
+}
+
+.links:hover {
+  color: rgb(241, 241, 241);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40px;
+}
