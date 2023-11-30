@@ -4,7 +4,7 @@ import "./movieCard.css";
 const apiImg = import.meta.env.VITE_IMAGE;
 
 export default function MovieCard(movie) {
-  const { poster_path, vote_average, title } = movie.movie;
+  const { poster_path, vote_average } = movie.movie;
   return (
     <>
       <div className="card-div">

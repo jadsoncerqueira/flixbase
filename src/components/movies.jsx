@@ -49,8 +49,8 @@ export default function Movies(info) {
           <Skeleton
             sx={{ bgcolor: "grey.900", borderRadius: "10px" }}
             variant="rectangular"
-            width={120}
-            height={30}
+            width={100}
+            height={20}
           />
         ) : (
           quantidade <= 8 && (
@@ -70,8 +70,8 @@ export default function Movies(info) {
               <Skeleton
                 sx={{ bgcolor: "grey.900", borderRadius: "10px" }}
                 variant="rectangular"
-                width={166.66}
-                height={250}
+                width={140}
+                height={210}
               />
               <Skeleton
                 sx={{
@@ -81,7 +81,7 @@ export default function Movies(info) {
                 }}
                 variant="rectangular"
                 width={120}
-                height={25}
+                height={30}
               />
             </div>
           ))}
