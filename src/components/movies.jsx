@@ -1,27 +1,71 @@
 import { useQuery } from "react-query";
 import MovieCard from "./movieCard";
 import { useNavigate } from "react-router-dom";
-import { Skeleton } from "@mui/material";
+import { Pagination, Skeleton, createTheme } from "@mui/material";
 import "./movie.css";
+import { useEffect, useState } from "react";
+import { ThemeProvider } from "@emotion/react";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const api = import.meta.env.VITE_API;
 
 export default function Movies(info) {
+  const [page, setPage] = useState(1);
   window.scroll({
     top: 0,
     behavior: "smooth",
   });
+
   const { tag, quantidade } = info.info;
+  const navigate = useNavigate();
+
+  const theme = createTheme({
+    components: {
+      MuiPaginationItem: {
+        styleOverrides: {
+          text: {
+            color: "white", // Substitua 'your_desired_color' pela cor desejada
+          },
+        },
+      },
+    },
+  });
+
+  const CustomPagination = (props) => {
+    // eslint-disable-next-line react/prop-types
+    const aux = props.props.total_pages > 500 ? 500 : props.props.total_pages;
+    return (
+      <ThemeProvider theme={theme}>
+        <Pagination
+          count={aux}
+          defaultPage={page}
+          page={page}
+          onChange={({ target }) => setPage(Number(target.innerText))}
+          color="secondary"
+          shape="rounded"
+        />
+      </ThemeProvider>
+    );
+  };
+
+  useEffect(() => {
+    setPage(1);
+  }, [tag]);
 
   const titulo = {
     upcoming: "Por Vir",
     top_rated: "Mais Votados",
     popular: "Mais Populares",
   };
-  const navigate = useNavigate();
-  const { data, error, isLoading } = useQuery(tag, () =>
-    fetch(`${api}${tag}?${apiKey}&language=pt-BR`).then((res) => res.json())
+  const fetchMovies = async (page) => {
+    const res = await fetch(
+      `${api}${tag}?${apiKey}&language=pt-BR&page=${page}&include_video=true`
+    );
+    return res.json();
+  };
+
+  const { data, error, isLoading } = useQuery([tag, page], () =>
+    fetchMovies(page, { keepPreviousData: true })
   );
 
   // if (isLoading) return "Loading...";
@@ -91,11 +135,16 @@ export default function Movies(info) {
           {data.results
             .filter((_el, i) => i < quantidade)
             .map((movie, index) => (
-              <>
-                <MovieCard key={index} movie={movie} />
-              </>
+              <MovieCard key={index} movie={movie} />
             ))}
         </div>
+      )}
+      {!isLoading && quantidade > 8 ? (
+        <div className="paginacao">
+          <CustomPagination props={data} />
+        </div>
+      ) : (
+        ""
       )}
     </section>
   );

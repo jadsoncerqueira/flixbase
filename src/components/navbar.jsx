@@ -154,8 +154,8 @@ function DrawerAppBar(props) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+        {navItems.map((item, i) => (
+          <ListItem key={i} disablePadding>
             <ListItemButton
               onClick={() => {
                 navigate(item.to);
