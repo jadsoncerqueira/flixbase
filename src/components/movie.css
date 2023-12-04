@@ -35,6 +35,13 @@
   /* width: 50px; */
 }
 
+.paginacao {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
 @media (max-width: 1120px) {
   .movies {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
