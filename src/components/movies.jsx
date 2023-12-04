@@ -74,6 +74,8 @@ export default function Movies(info) {
 
   const array = new Array(quantidade).fill("valor");
 
+  // console.log(data);
+
   return (
     <section>
       <div className="header-tops">
@@ -133,7 +135,7 @@ export default function Movies(info) {
       ) : (
         <div className="movies">
           {data.results
-            .filter((_el, i) => i < quantidade)
+            .filter((el, i) => i < quantidade && el.poster_path !== null)
             .map((movie, index) => (
               <MovieCard key={index} movie={movie} />
             ))}

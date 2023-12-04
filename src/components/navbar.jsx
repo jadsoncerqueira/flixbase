@@ -129,6 +129,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 // import Button from "@mui/material/Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import logoFlix from "../assets/flixbase_logo.png";
 
 const drawerWidth = 240;
 const navItems = [
@@ -202,7 +203,8 @@ function DrawerAppBar(props) {
               color: "#2896fc",
             }}
           >
-            Flix<span style={{ color: "white" }}>base</span>
+            <img className="logo-flix" src={logoFlix} alt="" /> Flix
+            <span style={{ color: "white" }}>base</span>
           </Typography>
           <Box
             sx={{

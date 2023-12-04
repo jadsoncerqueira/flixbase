@@ -22,3 +22,8 @@ section {
   justify-content: space-between;
   margin: 0 40px;
 }
+
+.logo-flix {
+  width: 30px;
+  /* border: 1px solid red; */
+}
