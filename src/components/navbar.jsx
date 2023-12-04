@@ -130,6 +130,7 @@ import Typography from "@mui/material/Typography";
 // import Button from "@mui/material/Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logoFlix from "../assets/flixbase_logo.png";
+import logoFlixP from "../assets/flixbase_favicon_preto.png";
 
 const drawerWidth = 240;
 const navItems = [
@@ -150,7 +151,17 @@ function DrawerAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography
+        variant="h5"
+        sx={{
+          my: 2,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "5px",
+        }}
+      >
+        <img className="logo-flix-p" src={logoFlixP} alt="" />
         Flixbase
       </Typography>
       <Divider />
