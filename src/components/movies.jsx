@@ -54,8 +54,8 @@ export default function Movies(info) {
 
   const titulo = {
     upcoming: "Por Vir",
-    top_rated: "Mais Votados",
-    popular: "Mais Populares",
+    top_rated: "+Votados",
+    popular: "Novidades",
   };
   const fetchMovies = async (page) => {
     const res = await fetch(
@@ -79,7 +79,7 @@ export default function Movies(info) {
   return (
     <section>
       <div className="header-tops">
-        <h3 style={{ fontWeight: "400" }}>
+        <h4 style={{ fontWeight: "400" }}>
           {isLoading ? (
             <Skeleton
               sx={{ bgcolor: "grey.900", borderRadius: "10px" }}
@@ -90,7 +90,7 @@ export default function Movies(info) {
           ) : (
             titulo[tag]
           )}
-        </h3>
+        </h4>
         {quantidade <= 8 && isLoading ? (
           <Skeleton
             sx={{ bgcolor: "grey.900", borderRadius: "10px" }}

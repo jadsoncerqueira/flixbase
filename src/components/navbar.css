@@ -33,3 +33,10 @@ section {
 .logo-flix-p {
   width: 20px;
 }
+
+@media (max-width: 693px) {
+  .typo {
+    height: 80px;
+    /* border: 1px solid red; */
+  }
+}

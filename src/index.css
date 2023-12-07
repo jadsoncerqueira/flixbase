@@ -23,7 +23,7 @@ a:hover {
 
 body {
   margin: 0;
-  padding-top: 60px;
+  padding-top: 80px;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -71,6 +71,6 @@ button:focus-visible {
 
 @media (max-width: 693px) {
   body {
-    padding-top: 55px;
+    padding-top: 65px;
   }
 }

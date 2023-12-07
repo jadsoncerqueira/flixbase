@@ -84,7 +84,7 @@ function DrawerAppBar(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav">
-        <Toolbar style={{ backgroundColor: "#000e24" }}>
+        <Toolbar className="typo" style={{ backgroundColor: "#000e24" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -110,7 +110,7 @@ function DrawerAppBar(props) {
               marginRight: "20px",
               fontSize: "25px",
               fontWeight: "700",
-              height: 60,
+              height: 75,
               color: "#2896fc",
             }}
           >
@@ -128,13 +128,14 @@ function DrawerAppBar(props) {
               margin: "0 auto",
               alignItems: "center",
               width: "100%",
-              height: 40,
+              // height: 40,
             }}
           >
             <InputBase
               sx={{ ml: 1, flex: 1 }}
-              placeholder="Search Google Maps"
+              placeholder="Buscar filme..."
               inputProps={{ "aria-label": "search google maps" }}
+              onFocus={() => console.log("Dentro!")}
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
               <SearchIcon />
@@ -154,7 +155,7 @@ function DrawerAppBar(props) {
                 // left: "70%",
                 gap: "10px",
                 marginRight: "40px",
-                marginLeft: "3%",
+                marginLeft: "2%",
               },
             }}
           >
