@@ -135,7 +135,7 @@ function DrawerAppBar(props) {
               sx={{ ml: 1, flex: 1 }}
               placeholder="Buscar filme..."
               inputProps={{ "aria-label": "search google maps" }}
-              onFocus={() => console.log("Dentro!")}
+              onFocus={() => navigate("/search")}
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
               <SearchIcon />

@@ -1,34 +1,26 @@
-import { useQuery } from "react-query";
-import MovieCard from "./movieCard";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import "./movieSearch.css";
+import { useState } from "react";
+import { Pagination, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Pagination, Skeleton, createTheme } from "@mui/material";
-import "./movie.css";
-import { useEffect, useState } from "react";
+import MovieCard from "../components/movieCard";
 import { ThemeProvider } from "@emotion/react";
+import { theme } from "../components/movies";
 
+const apiSearch = import.meta.env.VITE_API_SEARCH;
 const apiKey = import.meta.env.VITE_API_KEY;
-const api = import.meta.env.VITE_API;
 
-export const theme = createTheme({
-  components: {
-    MuiPaginationItem: {
-      styleOverrides: {
-        text: {
-          color: "white", // Substitua 'your_desired_color' pela cor desejada
-        },
-      },
-    },
-  },
-});
-export default function Movies(info) {
+export default function MovieSearch() {
+  return (
+    <QueryClientProvider client={new QueryClient()}>
+      <Body />
+    </QueryClientProvider>
+  );
+}
+
+function Body() {
+  const [query, setQuery] = useState("a");
   const [page, setPage] = useState(1);
-  window.scroll({
-    top: 0,
-    behavior: "smooth",
-  });
-
-  const { tag, quantidade } = info.info;
-  const navigate = useNavigate();
 
   const CustomPagination = (props) => {
     // eslint-disable-next-line react/prop-types
@@ -47,38 +39,31 @@ export default function Movies(info) {
     );
   };
 
-  useEffect(() => {
-    setPage(1);
-  }, [tag]);
-
-  const titulo = {
-    upcoming: "Por Vir",
-    top_rated: "+Votados",
-    popular: "Novidades",
-  };
-  const fetchMovies = async (page) => {
+  const fetchMovies = async (query, page) => {
     const res = await fetch(
-      `${api}${tag}?${apiKey}&language=pt-BR&page=${page}&include_video=true`
+      `${apiSearch}?query=${query}&${apiKey}&language=pt-BR&page=${page}`
     );
     return res.json();
   };
 
-  const { data, error, isLoading } = useQuery([tag, page], () =>
-    fetchMovies(page, { keepPreviousData: true })
+  const { data, error, isLoading } = useQuery(
+    [`${query}-${page}`, query, page],
+    () => fetchMovies(query, page)
   );
 
-  // if (isLoading) return "Loading...";
+  const quantidade = 20;
+  const navigate = useNavigate();
 
-  if (error) return "An error has occurred: " + error.message;
+  if (isLoading) return <div>Carregando...</div>;
+  if (error) return <div>Erro</div>;
+  console.log(data);
 
   const array = new Array(quantidade).fill("valor");
 
-  // console.log(data);
-
   return (
-    <section>
+    <section className="section-search">
       <div className="header-tops">
-        <h4 style={{ fontWeight: "400" }}>
+        <h3 style={{ fontWeight: "400" }}>
           {isLoading ? (
             <Skeleton
               sx={{ bgcolor: "grey.900", borderRadius: "10px" }}
@@ -87,9 +72,9 @@ export default function Movies(info) {
               height={30}
             />
           ) : (
-            titulo[tag]
+            "Resultados de busca:"
           )}
-        </h4>
+        </h3>
         {quantidade <= 8 && isLoading ? (
           <Skeleton
             sx={{ bgcolor: "grey.900", borderRadius: "10px" }}
