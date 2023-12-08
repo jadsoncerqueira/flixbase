@@ -1,117 +1,3 @@
-// import { styled, alpha } from "@mui/material/styles";
-// import AppBar from "@mui/material/AppBar";
-// import Box from "@mui/material/Box";
-// import Toolbar from "@mui/material/Toolbar";
-// import Typography from "@mui/material/Typography";
-// import InputBase from "@mui/material/InputBase";
-// import SearchIcon from "@mui/icons-material/Search";
-// import { Link, useLocation } from "react-router-dom";
-import "./navbar.css";
-
-// const Search = styled("div")(({ theme }) => ({
-//   position: "relative",
-//   borderRadius: theme.shape.borderRadius,
-//   backgroundColor: alpha(theme.palette.common.white, 0.15),
-//   "&:hover": {
-//     backgroundColor: alpha(theme.palette.common.white, 0.25),
-//   },
-//   marginLeft: 0,
-//   width: "100%",
-//   [theme.breakpoints.up("sm")]: {
-//     marginLeft: theme.spacing(1),
-//     width: "auto",
-//   },
-// }));
-
-// const SearchIconWrapper = styled("div")(({ theme }) => ({
-//   padding: theme.spacing(0, 2),
-//   height: "100%",
-//   position: "absolute",
-//   pointerEvents: "none",
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center",
-// }));
-
-// const StyledInputBase = styled(InputBase)(({ theme }) => ({
-//   color: "inherit",
-//   "& .MuiInputBase-input": {
-//     padding: theme.spacing(1, 1, 1, 0),
-//     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-//     transition: theme.transitions.create("width"),
-//     width: "100%",
-//     [theme.breakpoints.up("sm")]: {
-//       width: "12ch",
-//       "&:focus": {
-//         width: "20ch",
-//       },
-//     },
-//   },
-// }));
-
-// export default function NavBar() {
-//   const location = useLocation();
-//   let rotas = location.pathname.split("/"); rotas = rotas[rotas.length - 1];
-//   console.log(rotas === "");
-//   return (
-//     <Box sx={{ flexGrow: 1 }}>
-//       <AppBar sx={{ backgroundColor: "#011026" }}>
-//         <Toolbar className="toolbar">
-//           <Typography
-//             variant="h6"
-//             noWrap
-//             component="div"
-//             sx={{
-//               display: {
-//                 xs: "none",
-//                 sm: "block",
-//                 color: "#2896fc",
-//                 fontSize: "50px",
-//                 fontWeight: "700",
-//               },
-//             }}
-//           >
-//             Flix<span style={{ color: "white" }}>base</span>
-//           </Typography>
-//           <div className="nav-links">
-//             <Link
-//               className="links"
-//               to="/"
-//               style={{ color: rotas === "" && "white" }}
-//             >
-//               Home
-//             </Link>
-//             <Link
-//               className="links"
-//               to="/categoria/popular"
-//               style={{ color: rotas === "popular" && "white" }}
-//             >
-//               Popular
-//             </Link>
-//             <Link className="links" to="/categoria/top_rated" style={{ color: rotas === "top_rated" && "white" }}></Link>
-//             <Link
-//               className="links"
-//               to="/categoria/upcoming"
-//               style={{ color: rotas === "upcoming" && "white" }}
-//             >
-//               Por vir
-//             </Link>
-//           </div>
-//           <Search>
-//             <SearchIconWrapper>
-//               <SearchIcon />
-//             </SearchIconWrapper>
-//             <StyledInputBase
-//               placeholder="Search…"
-//               inputProps={{ "aria-label": "search" }}
-//             />
-//           </Search>
-//         </Toolbar>
-//       </AppBar>
-//     </Box>
-//   );
-// }
-
 import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
@@ -132,12 +18,18 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import logoFlix from "../assets/flixbase_logo.png";
 import logoFlixP from "../assets/flixbase_favicon_preto.png";
 
+import Paper from "@mui/material/Paper";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
+
+import "./navbar.css";
+
 const drawerWidth = 240;
 const navItems = [
   { title: "Home", to: "/", tag: "" },
   { title: "Popular", to: "/categoria/popular", tag: "popular" },
-  { title: "Mais Votados", to: "/categoria/top_rated", tag: "top_rated" },
-  { title: "Por vir", to: "/categoria/upcoming", tag: "upcoming" },
+  { title: "+Votados", to: "/categoria/top_rated", tag: "top_rated" },
+  { title: "Novidades", to: "/categoria/upcoming", tag: "upcoming" },
 ];
 
 function DrawerAppBar(props) {
@@ -192,7 +84,7 @@ function DrawerAppBar(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav">
-        <Toolbar style={{ backgroundColor: "#000e24" }}>
+        <Toolbar className="typo" style={{ backgroundColor: "#000e24" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -207,26 +99,63 @@ function DrawerAppBar(props) {
             component="div"
             sx={{
               flexGrow: 1,
-              display: { xs: "none", sm: "block" },
+              display: {
+                xs: "none",
+                sm: "flex",
+                alignItems: "center",
+                // justifyContent: "space-between",
+                gap: 10,
+              },
               marginLeft: "40px",
-              fontSize: "40px",
+              marginRight: "20px",
+              fontSize: "25px",
               fontWeight: "700",
+              height: 75,
               color: "#2896fc",
             }}
           >
-            <img className="logo-flix" src={logoFlix} alt="" /> Flix
-            <span style={{ color: "white" }}>base</span>
+            <img className="logo-flix" src={logoFlix} alt="" />
+            <p>
+              Flix<span style={{ color: "white" }}>base</span>
+            </p>
           </Typography>
+          <Paper
+            component="form"
+            sx={{
+              p: "2px 4px",
+              display: "flex",
+              // border: "1px solid red",
+              margin: "0 auto",
+              alignItems: "center",
+              width: "100%",
+              // height: 40,
+            }}
+          >
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              placeholder="Buscar filme..."
+              inputProps={{ "aria-label": "search google maps" }}
+              onFocus={() => navigate("/search")}
+            />
+            <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+              <SearchIcon />
+            </IconButton>
+          </Paper>
           <Box
             sx={{
               display: {
                 xs: "none",
-                sm: "block",
+                sm: "flex",
+                justifyContent: "space-between",
+                // width: "50%",
+                alignItems: "center",
                 // border: "1px solid red",
-                position: "absolute",
-                width: "310px",
-                left: "70%",
-                transform: "translate(-50%)",
+                // position: "absolute",
+                // width: "100%",
+                // left: "70%",
+                gap: "10px",
+                marginRight: "40px",
+                marginLeft: "2%",
               },
             }}
           >
