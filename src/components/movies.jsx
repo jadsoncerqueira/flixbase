@@ -9,7 +9,7 @@ import { ThemeProvider } from "@emotion/react";
 const apiKey = import.meta.env.VITE_API_KEY;
 const api = import.meta.env.VITE_API;
 
-export const theme = createTheme({
+const theme = createTheme({
   components: {
     MuiPaginationItem: {
       styleOverrides: {
@@ -78,7 +78,7 @@ export default function Movies(info) {
   return (
     <section>
       <div className="header-tops">
-        <h4 style={{ fontWeight: "400" }}>
+        <h4 style={{ fontWeight: "400", marginBottom: 15, marginTop: 15 }}>
           {isLoading ? (
             <Skeleton
               sx={{ bgcolor: "grey.900", borderRadius: "10px" }}

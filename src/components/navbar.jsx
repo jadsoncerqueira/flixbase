@@ -23,6 +23,7 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 
 import "./navbar.css";
+import { querySearchContext } from "../Context";
 
 const drawerWidth = 240;
 const navItems = [
@@ -36,6 +37,7 @@ function DrawerAppBar(props) {
   const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { query, setQuery } = React.useContext(querySearchContext);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -136,6 +138,8 @@ function DrawerAppBar(props) {
               placeholder="Buscar filme..."
               inputProps={{ "aria-label": "search google maps" }}
               onFocus={() => navigate("/search")}
+              value={query}
+              onChange={({ target }) => setQuery(target.value)}
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
               <SearchIcon />
