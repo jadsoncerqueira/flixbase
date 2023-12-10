@@ -21,7 +21,7 @@ export default function MovieSearch() {
 }
 
 function Body() {
-  const { query } = useContext(querySearchContext);
+  const { query, setQuery } = useContext(querySearchContext);
   const [page, setPage] = useState(1);
 
   const CustomPagination = (props) => {
@@ -83,7 +83,12 @@ function Body() {
             />
           ) : (
             <div className="div-arrow">
-              <button onClick={() => history.back()}>
+              <button
+                onClick={() => {
+                  setQuery("");
+                  history.back();
+                }}
+              >
                 <ArrowBackIcon />
                 voltar
               </button>

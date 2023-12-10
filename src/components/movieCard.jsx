@@ -1,15 +1,23 @@
 import StarIcon from "@mui/icons-material/Star";
 import placeholderImage from "../assets/placeholder.png";
 import "./movieCard.css";
+import { useNavigate } from "react-router-dom";
 
 const apiImg = import.meta.env.VITE_IMAGE;
 
 export default function MovieCard(movie) {
-  const { poster_path, vote_average } = movie.movie;
+  const navigate = useNavigate();
+
+  const { poster_path, vote_average, id } = movie.movie;
   return (
     <>
       <div className="card-div">
-        <button className="btn-movie">
+        <button
+          onClick={() => {
+            navigate(`/movie/detalhes/${id}`);
+          }}
+          className="btn-movie"
+        >
           <div className="pont">
             {" "}
             <StarIcon sx={{ color: "#ffb700", width: "17px" }} />{" "}
@@ -17,7 +25,7 @@ export default function MovieCard(movie) {
           </div>
           <img
             className="img-movie"
-            data-src={`${apiImg}${poster_path}`}
+            data-src={`${apiImg}w185${poster_path}`}
             src={placeholderImage}
             onLoad={({ target }) => {
               const dataImage = target.getAttribute("data-src");
