@@ -1,11 +1,13 @@
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
-import "./movieSearch.css";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Pagination, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import MovieCard from "../components/movieCard";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../components/movies";
+import { querySearchContext } from "../Context";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import "./movieSearch.css";
 
 const apiSearch = import.meta.env.VITE_API_SEARCH;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -19,7 +21,7 @@ export default function MovieSearch() {
 }
 
 function Body() {
-  const [query, setQuery] = useState("a");
+  const { query } = useContext(querySearchContext);
   const [page, setPage] = useState(1);
 
   const CustomPagination = (props) => {
@@ -39,9 +41,18 @@ function Body() {
     );
   };
 
+  useEffect(() => {
+    setPage(1);
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [query]);
+
   const fetchMovies = async (query, page) => {
+    const aux = query === "" ? "a" : query;
     const res = await fetch(
-      `${apiSearch}?query=${query}&${apiKey}&language=pt-BR&page=${page}`
+      `${apiSearch}?query=${aux}&${apiKey}&language=pt-BR&page=${page}`
     );
     return res.json();
   };
@@ -56,14 +67,13 @@ function Body() {
 
   if (isLoading) return <div>Carregando...</div>;
   if (error) return <div>Erro</div>;
-  console.log(data);
 
   const array = new Array(quantidade).fill("valor");
 
   return (
     <section className="section-search">
       <div className="header-tops">
-        <h3 style={{ fontWeight: "400" }}>
+        <h3 style={{ fontWeight: "400", marginBottom: 15, marginTop: 15 }}>
           {isLoading ? (
             <Skeleton
               sx={{ bgcolor: "grey.900", borderRadius: "10px" }}
@@ -72,7 +82,16 @@ function Body() {
               height={30}
             />
           ) : (
-            "Resultados de busca:"
+            <div className="div-arrow">
+              <button onClick={() => history.back()}>
+                <ArrowBackIcon />
+                voltar
+              </button>
+              <p>
+                Resultados de busca:{" "}
+                <span style={{ color: "#2896fc" }}>{query}</span>
+              </p>
+            </div>
           )}
         </h3>
         {quantidade <= 8 && isLoading ? (

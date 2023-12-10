@@ -6,6 +6,7 @@ import "./index.css";
 import Home from "./pages/home.jsx";
 import MovieCategoria from "./pages/movieCategorie.jsx";
 import MovieSearch from "./pages/movieSearch.jsx";
+import { QuerySearchProvider } from "./Context/movieSearchProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QuerySearchProvider>
+      <RouterProvider router={router} />
+    </QuerySearchProvider>
   </React.StrictMode>
 );

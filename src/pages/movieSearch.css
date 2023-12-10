@@ -2,9 +2,18 @@
   color: white;
 }
 
-.section-search {
-  /* border: 1px solid red; */
-  /* height: 100vh;
-  padding-left: 65px;
-  padding-top: 15px; */
+.div-arrow {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  /* flex-direction: column; */
+}
+.div-arrow button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  padding-right: 8px;
+  /* background-color: transparent;
+  color: white; */
 }
