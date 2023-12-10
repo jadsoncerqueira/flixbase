@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import StarIcon from "@mui/icons-material/Star";
 import "./movieDetail.css";
 import { useEffect, useState } from "react";
+import placeholderImage from "../assets/placeholder.png";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const api = import.meta.env.VITE_API;
@@ -100,7 +101,14 @@ function Aux() {
             </p>
           </div>
         </div>
-        <img src={`${apiImg}w342${poster_path}`} alt="" />
+        <img
+          src={placeholderImage}
+          data-src={`${apiImg}w342${poster_path}`}
+          onLoad={({ target }) => {
+            const dataImage = target.getAttribute("data-src");
+            target.setAttribute("src", dataImage);
+          }}
+        />
         <iframe
           className="youtube-src"
           width="100%"

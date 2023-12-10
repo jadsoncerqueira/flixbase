@@ -27,6 +27,7 @@
 
 .backg img {
   height: 350px;
+  width: 234.66px;
   border-radius: 10px;
   border: 2px solid rgb(255, 255, 255);
   grid-area: sidebar;

@@ -57,6 +57,7 @@ export default function Movies(info) {
     top_rated: "+Votados",
     popular: "Popular",
   };
+
   const fetchMovies = async (page) => {
     const res = await fetch(
       `${api}${tag}?${apiKey}&language=pt-BR&page=${page}&include_video=true`
