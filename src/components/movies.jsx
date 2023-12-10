@@ -9,12 +9,13 @@ import { ThemeProvider } from "@emotion/react";
 const apiKey = import.meta.env.VITE_API_KEY;
 const api = import.meta.env.VITE_API;
 
-const theme = createTheme({
+// eslint-disable-next-line react-refresh/only-export-components
+export const theme = createTheme({
   components: {
     MuiPaginationItem: {
       styleOverrides: {
         text: {
-          color: "white", // Substitua 'your_desired_color' pela cor desejada
+          color: "white",
         },
       },
     },
@@ -52,9 +53,9 @@ export default function Movies(info) {
   }, [tag]);
 
   const titulo = {
-    upcoming: "Por Vir",
+    upcoming: "Novidades",
     top_rated: "+Votados",
-    popular: "Novidades",
+    popular: "Popular",
   };
   const fetchMovies = async (page) => {
     const res = await fetch(

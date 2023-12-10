@@ -7,6 +7,7 @@ import Home from "./pages/home.jsx";
 import MovieCategoria from "./pages/movieCategorie.jsx";
 import MovieSearch from "./pages/movieSearch.jsx";
 import { QuerySearchProvider } from "./Context/movieSearchProvider.jsx";
+import MovieDetail from "./pages/movieDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <MovieSearch />,
+      },
+      {
+        path: "/movie/detalhes/:id",
+        element: <MovieDetail />,
       },
     ],
   },
