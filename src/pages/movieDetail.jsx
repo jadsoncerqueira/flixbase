@@ -101,15 +101,17 @@ function Aux() {
             </p>
           </div>
         </div>
-        <img
-          src={placeholderImage}
-          data-src={`${apiImg}w342${poster_path}`}
-          className="grid-item2"
-          onLoad={({ target }) => {
-            const dataImage = target.getAttribute("data-src");
-            target.setAttribute("src", dataImage);
-          }}
-        />
+        <div className="foto">
+          <img
+            src={placeholderImage}
+            data-src={`${apiImg}w342${poster_path}`}
+            className="grid-item2"
+            onLoad={({ target }) => {
+              const dataImage = target.getAttribute("data-src");
+              target.setAttribute("src", dataImage);
+            }}
+          />
+        </div>
         <iframe
           className="youtube-src grid-item3"
           width="100%"
