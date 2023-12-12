@@ -85,7 +85,7 @@ function Aux() {
         }}
         className="backg"
       >
-        <div className="voto">
+        <div className="voto grid-item1">
           <h2>
             {title}{" "}
             <span>
@@ -101,16 +101,19 @@ function Aux() {
             </p>
           </div>
         </div>
-        <img
-          src={placeholderImage}
-          data-src={`${apiImg}w342${poster_path}`}
-          onLoad={({ target }) => {
-            const dataImage = target.getAttribute("data-src");
-            target.setAttribute("src", dataImage);
-          }}
-        />
+        <div className="foto">
+          <img
+            src={placeholderImage}
+            data-src={`${apiImg}w342${poster_path}`}
+            className="grid-item2"
+            onLoad={({ target }) => {
+              const dataImage = target.getAttribute("data-src");
+              target.setAttribute("src", dataImage);
+            }}
+          />
+        </div>
         <iframe
-          className="youtube-src"
+          className="youtube-src grid-item3"
           width="100%"
           height="100%"
           src={`https://www.youtube.com/embed/${videoKey}?controls=1`}
@@ -118,6 +121,13 @@ function Aux() {
         ></iframe>
       </div>
       <div className="movie-infos">
+        <iframe
+          className="youtube-src-mobile"
+          width="100%"
+          height="100%"
+          src={`https://www.youtube.com/embed/${videoKey}?controls=1`}
+          allowFullScreen
+        ></iframe>
         <div className="generos">
           {generos.map((g, i) => (
             <span className="genero" key={i}>

@@ -9,28 +9,27 @@
 .backg {
   /* border: 1px solid red; */
   padding: 20px 90px;
-  height: 500px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   display: grid;
-  grid-template-areas:
-    "header header"
-    "sidebar main";
-  grid-template-columns: max-content 1fr;
-  /* justify-content: center;
-  align-items: center; */
-  gap: 15px;
-  /* filter: blur(3px); */
+  grid-template-columns: min-content auto;
+  grid-template-rows: max-content 300px;
+  gap: 10px;
   color: white;
 }
 
+.grid-item1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 .backg img {
-  height: 350px;
-  width: 234.66px;
+  height: 300px;
+  /* width: 234.66px; */
   border-radius: 10px;
   border: 2px solid rgb(255, 255, 255);
-  grid-area: sidebar;
+  /* grid-area: sidebar; */
 }
 
 .movie-infos {
@@ -49,21 +48,26 @@
 }
 
 .voto {
-  display: grid;
+  /* display: grid;
   grid-template-areas:
     "header header header"
     "sidebar main main";
   grid-area: header;
-  gap: 3px;
+  gap: 3px; */
   /* width: 268px; */
   /* border: 1px solid red; */
 }
 
-.youtube-src {
-  grid-area: main;
+.youtube-src,
+.youtube-src-mobile {
+  /* grid-area: main; */
   border: 2px solid white;
   border-radius: 10px;
   background-color: black;
+}
+
+.youtube-src-mobile {
+  display: none;
 }
 
 /* .voto p {
@@ -71,7 +75,7 @@
 } */
 .voto h2 {
   font-size: 28px;
-  grid-area: header;
+  /* grid-area: header; */
 }
 
 .header-info {
@@ -96,4 +100,37 @@
 
 .descricao {
   color: rgb(233, 233, 233);
+}
+
+@media (max-width: 900px) {
+  .backg {
+    grid-template-columns: 100%;
+    justify-content: center;
+    padding: 20px 10px;
+    grid-template-rows: max-content auto auto;
+  }
+
+  .grid-item1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .backg img {
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+  }
+
+  .foto {
+    border-radius: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.233);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+  }
+
+  .movie-infos {
+    height: max-content;
+    padding: 5px 10px;
+  }
 }

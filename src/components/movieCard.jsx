@@ -3,10 +3,15 @@ import placeholderImage from "../assets/placeholder.png";
 import "./movieCard.css";
 import { useNavigate } from "react-router-dom";
 
+import { querySearchContext } from "../Context";
+import { useContext } from "react";
+
 const apiImg = import.meta.env.VITE_IMAGE;
 
 export default function MovieCard(movie) {
   const navigate = useNavigate();
+
+  const { setQuery } = useContext(querySearchContext);
 
   const { poster_path, vote_average, id } = movie.movie;
   return (
@@ -14,6 +19,7 @@ export default function MovieCard(movie) {
       <div className="card-div">
         <button
           onClick={() => {
+            setQuery("");
             navigate(`/movie/detalhes/${id}`);
           }}
           className="btn-movie"
