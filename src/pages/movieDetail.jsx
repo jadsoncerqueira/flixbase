@@ -40,6 +40,11 @@ function Aux() {
   const { id } = useParams();
   const [videoKey, setVideoKey] = useState();
 
+  window.scroll({
+    top: 0,
+    behavior: "smooth",
+  });
+
   const fetchMoviesId = async (id) => {
     const res = await fetch(`${api}${id}?${apiKey}&language=pt-BR`);
     return res.json();
