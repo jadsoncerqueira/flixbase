@@ -99,7 +99,7 @@ function DrawerAppBar(props) {
           <Typography
             variant="h6"
             component="div"
-            onClick={() => console.log("teste")}
+            onClick={() => navigate("/")}
             sx={{
               flexGrow: 1,
               display: {
