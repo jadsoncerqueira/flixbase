@@ -40,6 +40,11 @@ function Aux() {
   const { id } = useParams();
   const [videoKey, setVideoKey] = useState();
 
+  window.scroll({
+    top: 0,
+    behavior: "smooth",
+  });
+
   const fetchMoviesId = async (id) => {
     const res = await fetch(`${api}${id}?${apiKey}&language=pt-BR`);
     return res.json();
@@ -51,7 +56,9 @@ function Aux() {
     if (!isLoading) {
       fetch(`${api}${id}/videos?${apiKey}&language=pt-BR`)
         .then((res) => res.json())
-        .then((r) => setVideoKey(r.results[0].key));
+        .then((r) => {
+          setVideoKey(r.results.length > 0 ? r.results[0].key : "");
+        });
     }
   }, [data, id, isLoading]);
 

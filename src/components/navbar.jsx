@@ -99,6 +99,7 @@ function DrawerAppBar(props) {
           <Typography
             variant="h6"
             component="div"
+            onClick={() => console.log("teste")}
             sx={{
               flexGrow: 1,
               display: {
@@ -107,6 +108,7 @@ function DrawerAppBar(props) {
                 alignItems: "center",
                 // justifyContent: "space-between",
                 gap: 10,
+                cursor: "pointer",
               },
               marginLeft: "40px",
               marginRight: "20px",
