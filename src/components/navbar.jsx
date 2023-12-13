@@ -86,7 +86,7 @@ function DrawerAppBar(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav">
-        <Toolbar className="typo" style={{ backgroundColor: "#000e24" }}>
+        <Toolbar className="typo">
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -110,7 +110,7 @@ function DrawerAppBar(props) {
                 gap: 10,
                 cursor: "pointer",
               },
-              marginLeft: "40px",
+              marginLeft: "0px",
               marginRight: "20px",
               fontSize: "25px",
               fontWeight: "700",
@@ -160,7 +160,6 @@ function DrawerAppBar(props) {
                 // width: "100%",
                 // left: "70%",
                 gap: "10px",
-                marginRight: "40px",
                 marginLeft: "2%",
               },
             }}
