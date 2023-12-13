@@ -1,3 +1,8 @@
+/* .css-hyum1k-MuiToolbar-root {
+  padding-left: 50px;
+  padding-right: 24px;
+} */
+
 section {
   background-color: #00060f;
 }
@@ -34,9 +39,20 @@ section {
   width: 20px;
 }
 
+.typo {
+  /* border: 1px solid red; */
+  /* display: flex;
+  justify-content: center; */
+  background-color: #001c49;
+  padding: 0 20px;
+}
+
 @media (max-width: 693px) {
   .typo {
     height: 80px;
     /* border: 1px solid red; */
   }
+}
+
+@media (max-width: 900px) {
 }

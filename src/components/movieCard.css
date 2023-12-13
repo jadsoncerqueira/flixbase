@@ -54,17 +54,10 @@
 }
 
 @media (max-width: 693px) {
-  .movies {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
   .img-movie {
-    width: 111px;
-    border-radius: 10px;
+    width: 101px;
+    /* border-radius: 10px; */
   }
-
-  /* .btn-movie {
-    height: max-content;
-  } */
 
   .card-div {
     margin-bottom: 0px;
