@@ -8,11 +8,13 @@ import MovieCategoria from "./pages/movieCategorie.jsx";
 import MovieSearch from "./pages/movieSearch.jsx";
 import { QuerySearchProvider } from "./Context/movieSearchProvider.jsx";
 import MovieDetail from "./pages/movieDetail.jsx";
+import PageNotFound from "./pages/pageNotFound.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <PageNotFound />,
     children: [
       {
         path: "/",
