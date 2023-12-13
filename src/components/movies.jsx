@@ -115,21 +115,26 @@ export default function Movies(info) {
           {array.map((_j, i) => (
             <div key={i}>
               <Skeleton
-                sx={{ bgcolor: "grey.900", borderRadius: "10px" }}
+                sx={{
+                  bgcolor: "grey.900",
+                  borderRadius: "10px",
+                  marginBottom: 2,
+                }}
                 variant="rectangular"
                 width={140}
                 height={210}
               />
-              <Skeleton
+              {/* <Skeleton
                 sx={{
                   bgcolor: "grey.900",
                   borderRadius: "10px",
+                  border: "1px solid red",
                   margin: "10px 0 13px 0",
                 }}
                 variant="rectangular"
                 width={120}
                 height={30}
-              />
+              /> */}
             </div>
           ))}
         </div>
@@ -138,11 +143,11 @@ export default function Movies(info) {
           {data.results
             .filter((el, i) => i < quantidade && el.poster_path !== null)
             .map((movie, index) => (
-              <MovieCard key={index} movie={movie} />
+              <MovieCard isLoading={isLoading} key={index} movie={movie} />
             ))}
         </div>
       )}
-      {!isLoading && quantidade > 8 ? (
+      {(!isLoading && quantidade) > 8 ? (
         <div className="paginacao">
           <CustomPagination props={data} />
         </div>
