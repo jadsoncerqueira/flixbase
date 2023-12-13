@@ -8,7 +8,7 @@ import { useContext } from "react";
 
 const apiImg = import.meta.env.VITE_IMAGE;
 
-export default function MovieCard(movie) {
+export default function MovieCard(movie, isLoading) {
   const navigate = useNavigate();
 
   const { setQuery } = useContext(querySearchContext);
@@ -24,11 +24,13 @@ export default function MovieCard(movie) {
           }}
           className="btn-movie"
         >
-          <div className="pont">
-            {" "}
-            <StarIcon sx={{ color: "#ffb700", width: "17px" }} />{" "}
-            {vote_average.toFixed(1)}
-          </div>
+          {isLoading.isLoading && (
+            <div className="pont">
+              {" "}
+              <StarIcon sx={{ color: "#ffb700", width: "17px" }} />{" "}
+              {vote_average.toFixed(1)}
+            </div>
+          )}
           <img
             className="img-movie"
             data-src={`${apiImg}w185${poster_path}`}
