@@ -2,6 +2,8 @@
 
 FlixBase é uma plataforma em construção dedicada à exploração do mundo cinematográfico. Este projeto visa fornecer uma experiência envolvente para entusiastas de filmes, permitindo a busca, descoberta e interação em um vasto catálogo cinematográfico.
 
+**Demosntreção do projeto:** https://flixbase.onrender.com/
+
 ## Tecnologias Utilizadas:
 
 - **React:** Uma biblioteca JavaScript para construir interfaces de usuário.
